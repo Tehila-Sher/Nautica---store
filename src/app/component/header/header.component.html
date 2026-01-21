@@ -1,0 +1,11 @@
+<nav class="header">
+  <a routerLink="/">מוצרים</a>
+  <a routerLink="/cart">עגלה</a>
+
+  <input
+    type="text"
+    placeholder="חיפוש מוצר"
+    [(ngModel)]="searchText"
+    (input)="onSearch()"
+  />
+</nav>
