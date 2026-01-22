@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Products } from '../../classes/products';
 import { ProductsService } from '../../services/products.service';
+import { CartService } from '../../services/cart.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -12,17 +13,25 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './show-all-products.component.scss'
 })
 export class ShowAllProductsComponent implements OnInit {
-
   products: Products[] = [];
+  showCart: boolean = false;
 
-  constructor(private productService: ProductsService,
-  private route: ActivatedRoute,
-  private router: Router   // ← זה היה חסר
-) {}
-  
-   viewDetails(item: Products): void {
-  this.router.navigate(['/product', item.productId]);
-}
+  constructor(
+    private productService: ProductsService,
+    private cartService: CartService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
+
+  viewDetails(item: Products): void {
+    this.router.navigate(['/product', item.productId]);
+  }
+
+  addToCart(item: Products): void {
+    this.cartService.addToCart(item);
+    alert('המוצר נוסף לעגלה!');
+  }
+
   ngOnInit(): void {
     this.loadProducts();
 
@@ -47,5 +56,9 @@ export class ShowAllProductsComponent implements OnInit {
         imageSrc: `https://localhost:7087${p.imageSrc}`
       }));
     });
+  }
+
+  setShowCart(val: boolean) {
+    this.showCart = val;
   }
 }

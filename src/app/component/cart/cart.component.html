@@ -1,0 +1,17 @@
+<div class="cart-page">
+  <h2>סל הקניות שלך</h2>
+  <div *ngIf="cartItems.length === 0">העגלה ריקה</div>
+  <div class="products">
+    <div class="product-card" *ngFor="let item of cartItems">
+      <img [src]="item.product.imageSrc" alt="{{ item.product.productName }}" width="100" />
+      <h4>{{ item.product.productName }}</h4>
+      <p>{{ item.product.description }}</p>
+      <p><strong>מחיר:</strong> {{ item.product.price }} ₪</p>
+      <div style="display:flex;align-items:center;justify-content:center;gap:10px;">
+        <button (click)="minus(item)">-</button>
+        <span>{{ item.quantity }}</span>
+        <button (click)="plus(item)">+</button>
+      </div>
+    </div>
+  </div>
+</div>

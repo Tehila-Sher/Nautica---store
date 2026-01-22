@@ -1,28 +1,12 @@
-.header {
-  display: flex;
-  gap: 16px;
-  padding: 10px;
-  background: #f2f2f2;
+.cart-page {
+  padding: 30px;
 }
-
-.cart-popup {
-  position: absolute;
-  top: 60px;
-  right: 20px;
-  background: #fff;
-  border: 1px solid #ccc;
-  padding: 20px;
-  z-index: 100;
-  min-width: 350px;
-}
-
 .products {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: flex-start;
 }
-
 .product-card {
   border: 1px solid #ccc;
   padding: 10px;
@@ -31,7 +15,6 @@
   background: #fafafa;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
-
 button {
   padding: 4px 10px;
   margin: 0 4px;
